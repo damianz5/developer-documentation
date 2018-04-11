@@ -44,4 +44,20 @@ $(document).ready(function () {
     $('.md-content a.md-icon').each(function() {
         $(this).attr('href', $(this).attr('href').replace('master/docs/', branchName + '/docs/'));
     });
+
+    // tmp
+    if (branchName === 'algolia_search') {
+        branchName = 'master';
+    }
+
+    docsearch({
+        apiKey: 'ff43d0effdda5f9ac43c2eb725a1af86',
+        indexName: 'ezplatform',
+        inputSelector: '#search_input',
+        algoliaOptions: {
+            'facetFilters': ["lang:en", "version:" + branchName],
+            'hitsPerPage': 10
+        },
+        debug: false
+    });
 });
